@@ -18,19 +18,20 @@ const Home = () => {
 
       useEffect(() => {
         if (!isFetching) return
+        function fetchMoreBlogs() {
+          dispatch(getApprovedBlogsThunk({username:"ADMIN", page:currentPage+1, limit:5}))
+              setIsFetching(false)
+              setCurrentPage(prevState => (prevState+1))
+        }
         fetchMoreBlogs()
-      }, [isFetching,fetchMoreBlogs])
+      }, [isFetching, dispatch, currentPage])
 
       function handleScroll() {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return
         setIsFetching(true)
       }
 
-      function fetchMoreBlogs() {
-        dispatch(getApprovedBlogsThunk({username:"ADMIN", page:currentPage+1, limit:5}))
-            setIsFetching(false)
-            setCurrentPage(prevState => (prevState+1))
-      }
+      
     return (
         <>
           <ul className="list-group mb-2">
