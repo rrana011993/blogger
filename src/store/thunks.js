@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 export const loginThunk = (user) => {
     return async (dispatch) => {
         const authenticateUser = async () => {
-            const response = await fetch('/bloggerServer/login', {
+            const response = await fetch('api/bloggerServer/login', {
                 method:'POST',
                 body: JSON.stringify(user),
                 headers: {
@@ -38,7 +38,7 @@ export const loginThunk = (user) => {
 export const addWriterThunk = (writer) => {
     return async (dispatch) => {
         const addWriter = async () => {
-            const response = await fetch('/bloggerServer/addUser', {
+            const response = await fetch('api/bloggerServer/addUser', {
                 method:'POST',
                 body: JSON.stringify(writer),
                 headers: {
@@ -64,7 +64,7 @@ export const addWriterThunk = (writer) => {
 export const addBlogThunk = (blog) => {
     return async (dispatch) => {
         const addBlog= async () => {
-            const response = await fetch('/bloggerServer/addBlog', {
+            const response = await fetch('api/bloggerServer/addBlog', {
                 method:'POST',
                 body: JSON.stringify(blog),
                 headers: {
@@ -90,7 +90,7 @@ export const addBlogThunk = (blog) => {
 export const getUserBlogsThunk = (payload) => {
     return async (dispatch) => {
         const getBlogs = async () => {
-            const response = await fetch('/bloggerServer/getBlogs', {
+            const response = await fetch('api/bloggerServer/getBlogs', {
                 method:'POST',
                 body: JSON.stringify(payload),
                 headers: {
@@ -122,7 +122,7 @@ export const getUserBlogsThunk = (payload) => {
 export const deleteBlogThunk = (payload) => {
     return async (dispatch) => {
         const deleteBlog = async () => {
-            const response = await fetch('/bloggerServer/deleteBlogs', {
+            const response = await fetch('api/bloggerServer/deleteBlogs', {
                 method:'DELETE',
                 body: JSON.stringify(payload),
                 headers: {
@@ -153,7 +153,7 @@ export const deleteBlogThunk = (payload) => {
 export const approveBlogThunk = (payload) => {
     return async (dispatch) => {
         const approveBlog = async () => {
-            const response = await fetch('/bloggerServer/approveBlogs', {
+            const response = await fetch('api/bloggerServer/approveBlogs', {
                 method:'POST',
                 body: JSON.stringify(payload),
                 headers: {
@@ -183,7 +183,7 @@ export const approveBlogThunk = (payload) => {
 export const getUserThunk = (payload) => {
     return async (dispatch) => {
         const getUsers = async () => {
-            const response = await fetch('/bloggerServer/getUsers', {
+            const response = await fetch('api/bloggerServer/getUsers', {
                 method:'POST',
                 body: JSON.stringify(payload),
                 headers: {
@@ -215,7 +215,7 @@ export const getUserThunk = (payload) => {
 export const deleteUserThunk = (payload) => {
     return async (dispatch) => {
         const deleteUser = async () => {
-            const response = await fetch('/bloggerServer/deleteUsers', {
+            const response = await fetch('api/bloggerServer/deleteUsers', {
                 method:'DELETE',
                 body: JSON.stringify(payload),
                 headers: {
@@ -247,7 +247,7 @@ export const deleteUserThunk = (payload) => {
 export const getApprovedBlogsThunk = (payload) => {
     return async (dispatch) => {
         const getApprovedBlogs = async () => {
-            const response = await fetch('/bloggerServer/getApprovedBlogs', {
+            const response = await fetch('api/bloggerServer/getApprovedBlogs', {
                 method:'POST',
                 body: JSON.stringify(payload),
                 headers: {
