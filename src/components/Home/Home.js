@@ -14,12 +14,12 @@ const Home = () => {
         dispatch(getApprovedBlogsThunk({username:'ADMIN', page:0, limit:5}))
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
-      }, [])
+      }, [dispatch])
 
       useEffect(() => {
         if (!isFetching) return
         fetchMoreBlogs()
-      }, [isFetching])
+      }, [isFetching,fetchMoreBlogs])
 
       function handleScroll() {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return
