@@ -16,23 +16,24 @@ export const ViewBlogs = () => {
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
-      }, [dispatch,username,blogList.length])
+      }, [dispatch, blogsList.length, username])
 
       useEffect(() => {
         if (!isFetching) return
+        function fetchMoreBlogs() {
+          dispatch(getUserBlogsThunk({username, page:currentPage+1, limit:4}))
+              setIsFetching(false)
+              setCurrentPage(prevState => (prevState+1))
+        }
         fetchMoreBlogs()
-      }, [isFetching,fetchMoreBlogs])
+      }, [isFetching, dispatch, currentPage, username])
 
       function handleScroll() {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return
         setIsFetching(true)
       }
 
-      function fetchMoreBlogs() {
-        dispatch(getUserBlogsThunk({username, page:currentPage+1, limit:4}))
-            setIsFetching(false)
-            setCurrentPage(prevState => (prevState+1))
-      }
+      
 
     return (
         <>
