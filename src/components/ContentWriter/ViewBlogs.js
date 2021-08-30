@@ -16,12 +16,12 @@ export const ViewBlogs = () => {
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
-      }, [])
+      }, [dispatch,username,bloglist.length])
 
       useEffect(() => {
         if (!isFetching) return
         fetchMoreBlogs()
-      }, [isFetching])
+      }, [isFetching,fetchMoreBlogs])
 
       function handleScroll() {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return
