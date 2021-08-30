@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     dispatch(actions.resetStates())
-  }, [])
+  }, [dispatch])
 
   const logoutHandler = (event) => {
     event.preventDefault()
