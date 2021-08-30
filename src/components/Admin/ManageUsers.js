@@ -18,19 +18,20 @@ const ManageUsers = () => {
 
       useEffect(() => {
         if (!isFetching) return
+        function fetchMoreUsers() {
+          dispatch(getUserThunk({username:"ADMIN", page:currentPage+1, limit:5}))
+              setIsFetching(false)
+              setCurrentPage(prevState => (prevState+1))
+        }
         fetchMoreUsers()
-      }, [isFetching,fetchMoreUsers])
+      }, [isFetching, dispatch, currentPage])
 
       function handleScroll() {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return
         setIsFetching(true)
       }
 
-      function fetchMoreUsers() {
-        dispatch(getUserThunk({username:"ADMIN", page:currentPage+1, limit:5}))
-            setIsFetching(false)
-            setCurrentPage(prevState => (prevState+1))
-      }
+      
 
       function deleteUser(username) {
         dispatch(deleteUserThunk({username}))
