@@ -16,7 +16,7 @@ export const ViewBlogs = () => {
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
-      }, [dispatch,username,bloglist.length])
+      }, [dispatch,username,blogList.length])
 
       useEffect(() => {
         if (!isFetching) return
