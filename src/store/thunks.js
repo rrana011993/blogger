@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 export const loginThunk = (user) => {
     return async (dispatch) => {
         const authenticateUser = async () => {
-            const response = await fetch('api/bloggerServer/login', {
+            const response = await fetch('https://blogger-server-1.herokuapp.com/api/bloggerServer/login', {
                 method:'POST',
                 body: JSON.stringify(user),
                 headers: {
