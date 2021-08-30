@@ -3,7 +3,7 @@ import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
 import { combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-const jwt = require('jsonwebtoken')
+
 
 const initialState = {
   isAuthenticated: false,
@@ -40,7 +40,7 @@ const storeSlice = createSlice({
     },
     approveBlog(state, action) {
       let currentStateBlogsCopy = [...state.blogs]
-      const index = currentStateBlogsCopy.findIndex((blog) => blog.title == action.payload.title)
+      const index = currentStateBlogsCopy.findIndex((blog) => blog.title === action.payload.title)
       currentStateBlogsCopy[index].approved = true
       state.blogs = [...currentStateBlogsCopy]
     },
