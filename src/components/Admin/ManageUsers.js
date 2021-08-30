@@ -14,12 +14,12 @@ const ManageUsers = () => {
       dispatch(getUserThunk({username:'ADMIN', page:0, limit:10}))
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
-      }, [])
+      }, [dispatch])
 
       useEffect(() => {
         if (!isFetching) return
         fetchMoreUsers()
-      }, [isFetching])
+      }, [isFetching,fetchMoreUsers])
 
       function handleScroll() {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return
